@@ -1,0 +1,168 @@
+[gd_scene load_steps=11 format=3 uid="uid://dpctjdduwtwpa"]
+
+[ext_resource type="Texture2D" uid="uid://dgjyucp7san8y" path="res://scenes/levels/menu/play.png" id="1_458jr"]
+[ext_resource type="Script" path="res://scenes/components/fancy_button.gd" id="1_lwkpj"]
+[ext_resource type="AudioStream" uid="uid://cmfvkphbpiwyf" path="res://sound/button_1.wav" id="3_is4ss"]
+[ext_resource type="AudioStream" uid="uid://bt0r2fggnsikn" path="res://sound/hit_1.wav" id="4_8kc81"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fk75v"]
+
+[sub_resource type="Animation" id="Animation_nbsnt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Texture:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_pgucq"]
+resource_name = "hover"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(2, 0.5, 1),
+"update": 0,
+"values": [Vector2(0.173914, 2.13487), Vector2(1.1673, 0.82875), Vector2(1.1, 1.1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Texture:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_f7s5c"]
+resource_name = "normal"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 3),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [0.10472, -0.10472]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Texture:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(1.05, 1.05), Vector2(0.95, 0.95)]
+}
+
+[sub_resource type="Animation" id="Animation_8l814"]
+resource_name = "pressed"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(0.9, 0.9)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Texture:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8q4wn"]
+_data = {
+"RESET": SubResource("Animation_nbsnt"),
+"hover": SubResource("Animation_pgucq"),
+"normal": SubResource("Animation_f7s5c"),
+"pressed": SubResource("Animation_8l814")
+}
+
+[node name="FancyButton" type="Button"]
+offset_right = 126.0
+offset_bottom = 64.0
+mouse_default_cursor_shape = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_fk75v")
+flat = true
+script = ExtResource("1_lwkpj")
+
+[node name="Texture" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -63.0
+offset_top = -32.0
+offset_right = 63.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(63, 33)
+texture = ExtResource("1_458jr")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8q4wn")
+}
+autoplay = "normal"
+playback_default_blend_time = 0.1
+
+[node name="Hover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_is4ss")
+volume_db = -6.0
+
+[node name="Click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_8kc81")
+volume_db = -6.0

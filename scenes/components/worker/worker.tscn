@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://8n8dpq4klmuw"]
+
+[ext_resource type="Script" path="res://scenes/components/worker/worker.gd" id="1_e48cl"]
+
+[node name="Worker" type="Node"]
+script = ExtResource("1_e48cl")

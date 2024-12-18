@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://dppxlpa5lmmsl"]
+
+[ext_resource type="FontFile" uid="uid://cvng4ycrqlslo" path="res://fonts/FiraMono-Bold.ttf" id="1_fu8dg"]
+[ext_resource type="Script" path="res://scenes/components/number_particle/number_particle.gd" id="1_ybn8p"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fohv8"]
+font = ExtResource("1_fu8dg")
+font_size = 20
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
+[node name="NumberParticle" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_ybn8p")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -113.0
+offset_top = -12.0
+offset_right = 113.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(20, 12.5)
+text = "10"
+label_settings = SubResource("LabelSettings_fohv8")
+horizontal_alignment = 1

@@ -1,0 +1,116 @@
+[gd_scene load_steps=10 format=3 uid="uid://u01o06wg01rc"]
+
+[ext_resource type="Script" path="res://scenes/levels/menu/menu.gd" id="1_8beai"]
+[ext_resource type="Texture2D" uid="uid://bq1yuatr1ghu5" path="res://scenes/levels/menu/bg.png" id="2_5t27l"]
+[ext_resource type="Texture2D" uid="uid://d0vt2cr8ihdf3" path="res://scenes/levels/menu/instructions1.png" id="4_f0l74"]
+[ext_resource type="PackedScene" uid="uid://dpctjdduwtwpa" path="res://scenes/components/fancy_button.tscn" id="4_y5w8n"]
+[ext_resource type="AudioStream" uid="uid://csosun17ier8a" path="res://sound/music/menu.ogg" id="5_qgyhd"]
+[ext_resource type="Texture2D" uid="uid://d35w6hql7opnj" path="res://scenes/levels/menu/en.png" id="7_3ot2g"]
+[ext_resource type="AudioStream" uid="uid://bt0r2fggnsikn" path="res://sound/hit_1.wav" id="7_b8mtb"]
+[ext_resource type="Texture2D" uid="uid://dumttmlflrt4h" path="res://scenes/levels/menu/br.png" id="8_o3gyu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ur61i"]
+
+[node name="Menu" type="CanvasLayer"]
+script = ExtResource("1_8beai")
+play_scene = "uid://b61ffqb1581s4"
+
+[node name="BG" type="TextureRect" parent="."]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_5t27l")
+
+[node name="Play" parent="." instance=ExtResource("4_y5w8n")]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 50.0
+offset_top = -136.0
+offset_right = 176.0
+offset_bottom = -72.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EN" type="TextureButton" parent="."]
+texture_filter = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -39.0
+offset_top = -32.0
+offset_right = -10.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("7_3ot2g")
+
+[node name="BR" type="TextureButton" parent="."]
+texture_filter = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -39.0
+offset_top = -58.0
+offset_right = -10.0
+offset_bottom = -34.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("8_o3gyu")
+
+[node name="Instructions" type="ColorRect" parent="."]
+visible = false
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.439216)
+
+[node name="Click" type="AudioStreamPlayer" parent="Instructions"]
+stream = ExtResource("7_b8mtb")
+volume_db = -6.0
+
+[node name="Button" type="Button" parent="Instructions"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ur61i")
+flat = true
+
+[node name="TextureRect" type="TextureRect" parent="Instructions/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_f0l74")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_qgyhd")
+volume_db = -8.0
+autoplay = true
+
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="EN" to="." method="_on_en_pressed"]
+[connection signal="pressed" from="BR" to="." method="_on_br_pressed"]
+[connection signal="pressed" from="Instructions/Button" to="." method="_on_button_pressed"]

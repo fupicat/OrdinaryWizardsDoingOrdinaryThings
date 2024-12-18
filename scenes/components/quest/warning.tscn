@@ -1,0 +1,117 @@
+[gd_scene load_steps=8 format=3 uid="uid://d37f1gmn5q64m"]
+
+[ext_resource type="Script" path="res://scenes/components/quest/warning.gd" id="1_66rqa"]
+[ext_resource type="Texture2D" uid="uid://cnjekinq8s7ap" path="res://scenes/components/quest/warning1.png" id="2_sjexb"]
+[ext_resource type="Texture2D" uid="uid://0eagw78am27s" path="res://scenes/components/quest/warning2.png" id="3_tvn1q"]
+
+[sub_resource type="Animation" id="Animation_1w3f5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_sjexb")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_1sus7"]
+resource_name = "normal"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("2_sjexb"), ExtResource("3_tvn1q")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_xufip"]
+resource_name = "hurry"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("2_sjexb"), ExtResource("3_tvn1q")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(2, 0.5),
+"update": 0,
+"values": [Vector2(1.4, 1.4), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4o48q"]
+_data = {
+"RESET": SubResource("Animation_1w3f5"),
+"hurry": SubResource("Animation_xufip"),
+"normal": SubResource("Animation_1sus7")
+}
+
+[node name="Warning" type="Node2D"]
+z_index = 2
+position = Vector2(-2, -69)
+script = ExtResource("1_66rqa")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_sjexb")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4o48q")
+}
+autoplay = "normal"
+
+[node name="ScreenNotif" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-1.2517e-06, 9.77516e-06)
+scale = Vector2(1.4, 1.6)
+
+[connection signal="screen_entered" from="ScreenNotif" to="." method="_on_screen_notif_screen_entered"]
+[connection signal="screen_exited" from="ScreenNotif" to="." method="_on_screen_notif_screen_exited"]

@@ -1,0 +1,385 @@
+[gd_scene load_steps=12 format=3 uid="uid://b87ga3sofstjy"]
+
+[ext_resource type="Script" path="res://scenes/levels/sandbox/alvo.gd" id="1_70s17"]
+[ext_resource type="Script" path="res://scenes/levels/sandbox/target.gd" id="1_b7ny5"]
+[ext_resource type="PackedScene" uid="uid://5irqm3tl8y7p" path="res://scenes/components/target/target.tscn" id="2_ouwus"]
+[ext_resource type="Texture2D" uid="uid://cklul72u7qmss" path="res://scenes/components/quest/target.png" id="3_p82dm"]
+[ext_resource type="Script" path="res://scenes/components/quest/target_anim.gd" id="4_gyivy"]
+
+[sub_resource type="Animation" id="Animation_4p5fj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TargetRing:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TargetRing:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RingGhost:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RingGhost:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("RingGhost:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_s0wf2"]
+resource_name = "hover"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TargetRing:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(-2),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TargetRing:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RingGhost:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_d8nsk"]
+resource_name = "idle"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TargetRing:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(0.95, 0.95), Vector2(1.1, 1.1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TargetRing:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.235294)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RingGhost:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_yre3w"]
+resource_name = "selected"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TargetRing:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TargetRing:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0.890196, 0.254902, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RingGhost:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(0.267943, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RingGhost:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(0.267943, 1),
+"update": 0,
+"values": [Vector2(1.2, 1.2), Vector2(2, 2)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("RingGhost:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_e8scs"]
+resource_name = "target"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TargetRing:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(0.5, 2, 1),
+"update": 0,
+"values": [Vector2(1.44444, 0.351351), Vector2(0.634921, 1.21622), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TargetRing:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RingGhost:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_58pig"]
+_data = {
+"RESET": SubResource("Animation_4p5fj"),
+"hover": SubResource("Animation_s0wf2"),
+"idle": SubResource("Animation_d8nsk"),
+"selected": SubResource("Animation_yre3w"),
+"target": SubResource("Animation_e8scs")
+}
+
+[node name="Global" type="Node2D"]
+script = ExtResource("1_70s17")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -1
+offset_left = -66.0
+offset_top = -52.0
+offset_right = 554.0
+offset_bottom = 419.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Quest" type="Node2D" parent="." groups=["quests"]]
+texture_filter = 1
+position = Vector2(367, 124)
+script = ExtResource("1_b7ny5")
+
+[node name="Target" parent="Quest" instance=ExtResource("2_ouwus")]
+process_mode = 1
+
+[node name="TargetAnimation" type="Node2D" parent="Quest"]
+
+[node name="TargetRing" type="Sprite2D" parent="Quest/TargetAnimation"]
+z_index = -1
+texture = ExtResource("3_p82dm")
+
+[node name="RingGhost" type="Sprite2D" parent="Quest/TargetAnimation"]
+z_index = -1
+texture = ExtResource("3_p82dm")
+
+[node name="TargetAnim" type="AnimationPlayer" parent="Quest/TargetAnimation"]
+libraries = {
+"": SubResource("AnimationLibrary_58pig")
+}
+autoplay = "idle"
+playback_default_blend_time = 0.05
+script = ExtResource("4_gyivy")
+
+[node name="Quest2" type="Node2D" parent="." groups=["quests"]]
+texture_filter = 1
+position = Vector2(247, 258)
+script = ExtResource("1_b7ny5")
+
+[node name="Target" parent="Quest2" instance=ExtResource("2_ouwus")]
+process_mode = 1
+
+[node name="TargetAnimation" type="Node2D" parent="Quest2"]
+
+[node name="TargetRing" type="Sprite2D" parent="Quest2/TargetAnimation"]
+z_index = -1
+texture = ExtResource("3_p82dm")
+
+[node name="RingGhost" type="Sprite2D" parent="Quest2/TargetAnimation"]
+z_index = -1
+texture = ExtResource("3_p82dm")
+
+[node name="TargetAnim" type="AnimationPlayer" parent="Quest2/TargetAnimation"]
+libraries = {
+"": SubResource("AnimationLibrary_58pig")
+}
+autoplay = "idle"
+playback_default_blend_time = 0.05
+script = ExtResource("4_gyivy")
+
+[node name="Quest3" type="Node2D" parent="." groups=["quests"]]
+texture_filter = 1
+position = Vector2(124, 121)
+script = ExtResource("1_b7ny5")
+
+[node name="Target" parent="Quest3" instance=ExtResource("2_ouwus")]
+process_mode = 1
+
+[node name="TargetAnimation" type="Node2D" parent="Quest3"]
+
+[node name="TargetRing" type="Sprite2D" parent="Quest3/TargetAnimation"]
+z_index = -1
+texture = ExtResource("3_p82dm")
+
+[node name="RingGhost" type="Sprite2D" parent="Quest3/TargetAnimation"]
+z_index = -1
+texture = ExtResource("3_p82dm")
+
+[node name="TargetAnim" type="AnimationPlayer" parent="Quest3/TargetAnimation"]
+libraries = {
+"": SubResource("AnimationLibrary_58pig")
+}
+autoplay = "idle"
+playback_default_blend_time = 0.05
+script = ExtResource("4_gyivy")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 16.0
+offset_top = 315.0
+offset_right = 134.0
+offset_bottom = 346.0
+focus_mode = 0
+text = "Select"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 16.0
+offset_top = 293.0
+offset_right = 134.0
+offset_bottom = 316.0
+text = "Current mode"
+horizontal_alignment = 1
+
+[connection signal="hover" from="Quest/Target" to="Quest/TargetAnimation/TargetAnim" method="_on_target_hover"]
+[connection signal="idle" from="Quest/Target" to="Quest/TargetAnimation/TargetAnim" method="_on_target_idle"]
+[connection signal="selected" from="Quest/Target" to="Quest" method="_on_target_selected"]
+[connection signal="selected" from="Quest/Target" to="Quest/TargetAnimation/TargetAnim" method="_on_target_selected"]
+[connection signal="targeted" from="Quest/Target" to="Quest/TargetAnimation/TargetAnim" method="_on_target_targeted"]
+[connection signal="hover" from="Quest2/Target" to="Quest2/TargetAnimation/TargetAnim" method="_on_target_hover"]
+[connection signal="idle" from="Quest2/Target" to="Quest2/TargetAnimation/TargetAnim" method="_on_target_idle"]
+[connection signal="selected" from="Quest2/Target" to="Quest2" method="_on_target_selected"]
+[connection signal="selected" from="Quest2/Target" to="Quest2/TargetAnimation/TargetAnim" method="_on_target_selected"]
+[connection signal="targeted" from="Quest2/Target" to="Quest2/TargetAnimation/TargetAnim" method="_on_target_targeted"]
+[connection signal="hover" from="Quest3/Target" to="Quest3/TargetAnimation/TargetAnim" method="_on_target_hover"]
+[connection signal="idle" from="Quest3/Target" to="Quest3/TargetAnimation/TargetAnim" method="_on_target_idle"]
+[connection signal="selected" from="Quest3/Target" to="Quest3" method="_on_target_selected"]
+[connection signal="selected" from="Quest3/Target" to="Quest3/TargetAnimation/TargetAnim" method="_on_target_selected"]
+[connection signal="targeted" from="Quest3/Target" to="Quest3/TargetAnimation/TargetAnim" method="_on_target_targeted"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

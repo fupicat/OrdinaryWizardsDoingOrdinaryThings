@@ -1,0 +1,60 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="OrdinaryWizardsDoingOrdinaryThings"
+run/main_scene="res://scenes/main.tscn"
+config/features=PackedStringArray("4.2", "GL Compatibility")
+config/icon="res://scenes/components/wizard/normal.png"
+
+[display]
+
+window/size/viewport_width=480
+window/size/viewport_height=360
+window/stretch/mode="canvas_items"
+
+[internationalization]
+
+locale/translation_remaps={
+"res://scenes/components/game_over/game_over.png": PackedStringArray("res://scenes/components/game_over/game_over.pt.png:pt"),
+"res://scenes/components/game_over/reason_hired.png": PackedStringArray("res://scenes/components/game_over/reason_hired.pt.png:pt"),
+"res://scenes/components/game_over/reason_stars.png": PackedStringArray("res://scenes/components/game_over/reason_stars.pt.png:pt"),
+"res://scenes/components/game_over/reason_wizards.png": PackedStringArray("res://scenes/components/game_over/reason_wizards.pt.png:pt"),
+"res://scenes/components/game_over/retry.png": PackedStringArray("res://scenes/components/game_over/retry.pt.png:pt"),
+"res://scenes/components/game_over/you_win.png": PackedStringArray("res://scenes/components/game_over/you_win.pt.png:pt"),
+"res://scenes/components/quest/sandwich3.png": PackedStringArray("res://scenes/components/quest/sandwich3.pt.png:pt"),
+"res://scenes/components/quest/sandwich4.png": PackedStringArray("res://scenes/components/quest/sandwich4.pt.png:pt"),
+"res://scenes/components/royal_decree/evidence.png": PackedStringArray("res://scenes/components/royal_decree/evidence.pt.png:pt"),
+"res://scenes/components/royal_decree/fishtank.png": PackedStringArray("res://scenes/components/royal_decree/fishtank.pt.png:pt"),
+"res://scenes/components/royal_decree/garbage.png": PackedStringArray("res://scenes/components/royal_decree/garbage.pt.png:pt"),
+"res://scenes/components/royal_decree/harvest.png": PackedStringArray("res://scenes/components/royal_decree/harvest.pt.png:pt"),
+"res://scenes/components/royal_decree/meditation.png": PackedStringArray("res://scenes/components/royal_decree/meditation.pt.png:pt"),
+"res://scenes/components/royal_decree/party.png": PackedStringArray("res://scenes/components/royal_decree/party.pt.png:pt"),
+"res://scenes/components/royal_decree/print.png": PackedStringArray("res://scenes/components/royal_decree/print.pt.png:pt"),
+"res://scenes/components/royal_decree/sandwich.png": PackedStringArray("res://scenes/components/royal_decree/sandwich.pt.png:pt"),
+"res://scenes/components/royal_decree/taxes.png": PackedStringArray("res://scenes/components/royal_decree/taxes.pt.png:pt"),
+"res://scenes/components/royal_decree/toilet.png": PackedStringArray("res://scenes/components/royal_decree/toilet.pt.png:pt"),
+"res://scenes/components/royal_decree/win.png": PackedStringArray("res://scenes/components/royal_decree/win.pt.png:pt"),
+"res://scenes/components/wizard_count/buy.png": PackedStringArray("res://scenes/components/wizard_count/buy.pt.png:pt"),
+"res://scenes/levels/menu/instructions1.png": PackedStringArray("res://scenes/levels/menu/instructions1.pt.png:pt"),
+"res://scenes/levels/menu/instructions2.png": PackedStringArray("res://scenes/levels/menu/instructions2.pt.png:pt"),
+"res://scenes/levels/menu/instructions3.png": PackedStringArray("res://scenes/levels/menu/instructions3.pt.png:pt"),
+"res://scenes/levels/menu/instructions4.png": PackedStringArray("res://scenes/levels/menu/instructions4.pt.png:pt"),
+"res://scenes/levels/menu/play.png": PackedStringArray("res://scenes/levels/menu/play.pt.png:pt")
+}
+locale/locale_filter_mode=1
+locale/language_filter=["pt"]
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(1, 1, 1, 1)

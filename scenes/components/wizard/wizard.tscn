@@ -1,0 +1,263 @@
+[gd_scene load_steps=14 format=3 uid="uid://cms7xawcd4rhb"]
+
+[ext_resource type="Script" path="res://scenes/components/wizard/wizard.gd" id="1_yxdga"]
+[ext_resource type="Texture2D" uid="uid://q813kaef5gec" path="res://scenes/components/wizard/normal.png" id="2_h8n02"]
+[ext_resource type="PackedScene" uid="uid://d20hgof5bhd2q" path="res://scenes/components/walker/walker.tscn" id="2_mulnn"]
+[ext_resource type="Script" path="res://scenes/components/wizard/wizard_anim.gd" id="3_pp8t0"]
+[ext_resource type="PackedScene" uid="uid://8n8dpq4klmuw" path="res://scenes/components/worker/worker.tscn" id="3_rqqdo"]
+
+[sub_resource type="Animation" id="Animation_p0k7l"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RootsAllTheWayDown/Normal:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RootsAllTheWayDown/Normal:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RootsAllTheWayDown/Normal:skew")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_tkrdl"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RootsAllTheWayDown/Normal:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(1.05, 0.95), Vector2(0.95, 1.05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RootsAllTheWayDown/Normal:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RootsAllTheWayDown/Normal:skew")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_2ri08"]
+resource_name = "walking"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RootsAllTheWayDown/Normal:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.5, 2),
+"update": 0,
+"values": [Vector2(1.1, 0.9), Vector2(0.95, 1.05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RootsAllTheWayDown/Normal:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RootsAllTheWayDown/Normal:skew")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.279253]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tadio"]
+_data = {
+"RESET": SubResource("Animation_p0k7l"),
+"idle": SubResource("Animation_tkrdl"),
+"walking": SubResource("Animation_2ri08")
+}
+
+[sub_resource type="Animation" id="Animation_5wkqh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Root/RootsAllTheWayDown:skew")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Root/RootsAllTheWayDown:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_7npf7"]
+resource_name = "attack"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Root/RootsAllTheWayDown:skew")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3),
+"transitions": PackedFloat32Array(0.5, 2, 1),
+"update": 0,
+"values": [0.523599, -0.0698132, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Root/RootsAllTheWayDown:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_27r6b"]
+resource_name = "change_costume"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Root/RootsAllTheWayDown:skew")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Root/RootsAllTheWayDown:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(1.4312, 0.766381), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fh7q5"]
+_data = {
+"RESET": SubResource("Animation_5wkqh"),
+"attack": SubResource("Animation_7npf7"),
+"change_costume": SubResource("Animation_27r6b")
+}
+
+[node name="Wizard" type="Node2D" groups=["wizards"]]
+texture_filter = 1
+script = ExtResource("1_yxdga")
+
+[node name="Root" type="Node2D" parent="."]
+
+[node name="RootsAllTheWayDown" type="Node2D" parent="Root"]
+
+[node name="Normal" type="Sprite2D" parent="Root/RootsAllTheWayDown"]
+texture = ExtResource("2_h8n02")
+offset = Vector2(2, -21)
+
+[node name="WizardAnim" type="AnimationPlayer" parent="Root"]
+libraries = {
+"": SubResource("AnimationLibrary_tadio")
+}
+playback_default_blend_time = 0.05
+script = ExtResource("3_pp8t0")
+
+[node name="SecondaryAnim" type="AnimationPlayer" parent="Root/WizardAnim"]
+root_node = NodePath("../../..")
+libraries = {
+"": SubResource("AnimationLibrary_fh7q5")
+}
+
+[node name="Walker" parent="." instance=ExtResource("2_mulnn")]
+
+[node name="Worker" parent="." instance=ExtResource("3_rqqdo")]
+
+[node name="AttackTimer" type="Timer" parent="."]
+process_mode = 1
+
+[connection signal="costume_changed" from="." to="Root/WizardAnim" method="_on_wizard_costume_changed"]
+[connection signal="reached_target" from="Walker" to="." method="_on_walker_reached_target"]
+[connection signal="state_changed" from="Walker" to="Root/WizardAnim" method="_on_walker_state_changed"]
+[connection signal="worked" from="Worker" to="Root/WizardAnim" method="_on_worker_worked"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
